@@ -22,16 +22,16 @@
   <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
-      <id>psdemo-releases</id>
-      <name>psdemo-releases</name>
-      <url>http://51.20.181.255:8081/repository/psdemo-releases/</url>
+      <id>spdemo-releases</id>
+      <name>spdemo-releases</name>
+      <url>http://51.20.181.255:8081/repository/spdemo-releases/</url>
       <layout>default</layout>
     </repository>
     <snapshotRepository>
       <uniqueVersion>true</uniqueVersion>
-      <id>psdemo-snopshots</id>
-      <name>psdemo-snopshots</name>
-      <url>http://51.20.181.255:8081/repository/psdemo-snopshots/</url>
+      <id>spdemo-snopshots</id>
+      <name>spdemo-snopshots</name>
+      <url>http://51.20.181.255:8081/repository/spdemo-snopshots/</url>
       <layout>legacy</layout>
     </snapshotRepository>
  </distributionManagement>
