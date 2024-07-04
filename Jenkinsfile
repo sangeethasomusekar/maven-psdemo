@@ -5,24 +5,28 @@ pipeline {
         
         maven "mvn"
     }
-
     stages {
-        stage('Build') {
+        stage('prepare') {
             steps {
-               
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-
-                
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+               git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh "mvn clean install"
       
             }
-
-            post {
-               
-                success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
-                }
+        }
+        stage('bdeploy-dev') {
+            steps {
+                input 'given an approval'
+                echo "deploying an appls in devo"  
+            }
+        }
+        stage('bdeploy-sprod') {
+            steps {
+                input 'given an approval'
+                echo "deploying an appls in prod"       
             }
         }
     }
