@@ -1,7 +1,6 @@
 pipeline {
-    agent { label, 'maven-label' }
+    agent { label, 'maven-label'}
 
-    }
     stages {
         stage('prepare') {
             steps {
@@ -23,13 +22,14 @@ pipeline {
         stage('deploy-stage') {
             steps {
                 input 'given an approval'
-                echo "deploying an appls in stage"  
+                echo "deploying an appln in stage"  
             }   
         } 
         stage('deploy-prod') {
             steps {
                 input 'given an approval'
-                echo "deploying an appln in prod"            
+                echo "deploying an appln in prod"           
+                
             }
         }
     }
