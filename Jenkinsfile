@@ -13,17 +13,17 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh "mvn clean install"
+                sh " clean install"
       
             }
         }
-        stage('bdeploy-dev') {
+        stage('deploy-dev') {
             steps {
                 input 'given an approval'
                 echo "deploying an appls in devo"  
             }
         }
-        stage('bdeploy-sprod') {
+        stage('deploy-prod') {
             steps {
                 input 'given an approval'
                 echo "deploying an appls in prod"     
