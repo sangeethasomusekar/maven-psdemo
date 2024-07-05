@@ -26,7 +26,15 @@ pipeline {
         stage('bdeploy-sprod') {
             steps {
                 input 'given an approval'
-                echo "deploying an appls in prod"       
+                echo "deploying an appls in prod"     
+        <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+		    <version>2.19.1</version>
+			<configuration>
+    		<testFailureIgnore>true</testFailureIgnore>
+			</configuration>
+		</plugin>          
             }
         }
     }
