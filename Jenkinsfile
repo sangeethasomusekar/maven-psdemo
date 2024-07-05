@@ -1,5 +1,5 @@
 pipeline {
-    agent {label, 'maven-label'}
+    agent { label, 'maven-label' }
 
     stages {
         stage('prepare') {
@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn clean install'
+                sh 'clean install'
             }
         }   
         stage('deploying-dev') {
