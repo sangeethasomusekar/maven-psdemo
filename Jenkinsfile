@@ -1,33 +1,35 @@
 pipeline {
-    agent any
+    agent { label, 'maven-label' }
 
-    tools {
-        
-        maven "mvn"
     }
     stages {
         stage('prepare') {
             steps {
-               git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+               git branch: 'main', url:'https://github.com/jglick/simple-maven-project-with-tests.git'
             }
         }
         stage('build') {
             steps {
-                sh " clean install"
+                sh "mvn clean install"
       
             }
         }
-        stage('deploy-dev') {
+        stage('bdeploy-dev') {
             steps {
                 input 'given an approval'
-                echo "deploying an appls in devo"  
+                echo "deploying an appln in devo"  
             }
         }
+        stage('deploy-stage') {
+            steps {
+                input 'given an approval'
+                echo "deploying an appls in stage"  
+            }   
+        } 
         stage('deploy-prod') {
             steps {
                 input 'given an approval'
-                echo "deploying an appls in prod"     
-        
+                echo "deploying an appln in prod"            
             }
         }
     }
