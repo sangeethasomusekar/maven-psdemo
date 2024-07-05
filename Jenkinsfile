@@ -12,18 +12,18 @@ pipeline {
                 sh 'mvn clean install'
             }
         }   
-        stage('deploying-dev') {
+        stage('deploy-dev') {
             steps {
                 echo "deploying an appln in devo"
             }
         }   
-        stage('deploying-stage') {
+        stage('deploy-stage') {
             steps {
                 input 'give an approval'
                 echo "deploying an appln in stage"
             }
         }   
-        stage('deploying-prod') {
+        stage('deploy-prod') {
             steps {
                 input 'give an approval'
                 echo "deploying an appln in prod"
