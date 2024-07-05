@@ -1,32 +1,33 @@
 pipeline {
-    agent any
-
-    tools {
-       
-        maven "mvn"
-    }
+    agent {lable, 'maven-lable'}
 
     stages {
-        stage('Build') {
+        stage('prepare') {
             steps {
-                
-                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-
-                
-                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-
-                
-            }
-
-            post {
-                
-                success {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
-                }
+                git branch: 'main', url: 'https://github.com/sangeethasomusekar/maven-psdemo.git'
             }
         }
+        stage('build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }   
+        stage('deploying-dev') {
+            steps {
+                echo 'deploying an appln in devo'
+            }
+        }   
+        stage('deploying-stage') {
+            steps {
+                input 'give an approval'
+                echo 'deploying an appln in stage'
+            }
+        }   
+        stage('deploying-prod') {
+            steps {
+                input 'give an approval'
+                echo 'deploying an appln in prod'
+            }
+        }   
     }
 }
-
-           
