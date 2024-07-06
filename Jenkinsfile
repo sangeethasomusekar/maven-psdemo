@@ -1,33 +1,18 @@
 pipeline {
-    agent  { label, 'maven-label'}
-    
+    agent any
     stages {
-        stage('prepare') {
+        stage('Example Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/sangeethasomusekar/maven-psdemo.git'
+                echo 'Hello World'
             }
         }
-        stage('build') {
-            steps {
-                sh 'mvn clean install'
+        stage('Example Deploy') {
+            when {
+                branch 'production'
             }
-        }   
-        stage('deploy-dev') {
             steps {
-                echo "deploying an appln in devo"
+                echo 'Deploying'
             }
-        }   
-        stage('deploy-stage') {
-            steps {
-                input 'give an approval'
-                echo "deploying an appln in stage"
-            }
-        }   
-        stage('deploy-prod') {
-            steps {
-                input 'give an approval'
-                echo "deploying an appln in prod"
-            }
-        }   
+        }
     }
 }
