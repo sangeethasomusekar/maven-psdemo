@@ -6,6 +6,11 @@ pipeline {
                 echo 'Hello World'
             }
         }
+       stage('greet') {
+            steps {
+                sayhello 'sangeetha'
+            }
+        } 
         stage('Example Deploy') {
             when {
                 branch 'production'
