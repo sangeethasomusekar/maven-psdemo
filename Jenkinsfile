@@ -8,7 +8,7 @@ pipeline {
         }
        stage('greet') {
             steps {
-                sayhello 'sangeetha'
+                sayhello 'devops'
             }
         } 
         stage('Example Deploy') {
