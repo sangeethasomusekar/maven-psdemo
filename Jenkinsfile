@@ -1,6 +1,6 @@
 def sayhello(string name){
     echo "hello, ${name}."
-
+}
 pipeline {
     agent any
     
