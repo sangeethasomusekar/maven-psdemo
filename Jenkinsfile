@@ -1,7 +1,6 @@
-@Library('pipline-library-demo')_
- // def sayhello(String name){
- // echo "hello, ${name}."
-// }
+ def sayhello(String name){
+  echo "hello, ${name}."
+}
 pipeline {
     agent any
     
